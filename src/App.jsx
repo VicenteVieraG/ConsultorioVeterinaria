@@ -6,14 +6,14 @@ import {useState} from "react";
 function App() {
 	const [pacientes,setPacientes]=useState([]);
 
-	const tuv = (valor) => console.log(valor);
 	return (
 		<div className="container mx-auto mt-20">
-			<Header
-				tuv={tuv}
-			/>
+			<Header/>
 			<div className="mt-12 md:flex">
-				<Formulario/>
+				<Formulario
+					pacientes={pacientes}
+					setPacientes={setPacientes}
+				/>
 				<ListadoPacientes/>
 			</div>
 		</div>
