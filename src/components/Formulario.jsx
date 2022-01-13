@@ -1,7 +1,7 @@
-import {useState, useEffect} from 'react'
+import {useState, } from 'react'
 import Error from './Error'
 
-const Formulario = ({pacientes,setPacientes}) => {
+const Formulario = ({pacientes,paciente,setPacientes}) => {
     const [nombre, setNombre] = useState("")
     const [propietario, setPropietario] = useState("")
     const [email, setEmail] = useState("")
@@ -37,6 +37,7 @@ const Formulario = ({pacientes,setPacientes}) => {
         setEmail("");
         setFecha("");
         setSintomas("");
+
     }
 
     return (
