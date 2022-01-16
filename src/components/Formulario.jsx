@@ -40,7 +40,8 @@ const Formulario = ({pacientes,paciente,setPacientes}) => {
             propietario,
             email,
             fecha,
-            sintomas
+            sintomas,
+            id:Math.random().toString(36).substr(2)
         }
 
         setPacientes([...pacientes,objetoPaciente])

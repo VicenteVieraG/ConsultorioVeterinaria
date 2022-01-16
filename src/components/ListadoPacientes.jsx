@@ -15,7 +15,7 @@ function ListadoPacientes({pacientes,setPaciente,}) {
                         <span className="text-indigo-600 font-bold break-normal">Pacientes y Citas</span>
                     </p>
         
-                    {pacientes.map(pacientes => <Paciente key={id} paciente={pacientes} setPaciente={setPaciente}/>)}
+                    {pacientes.map(pacientes => <Paciente key={pacientes.id} paciente={pacientes} setPaciente={setPaciente}/>)}
                 </>
             ) : (
                 <>
