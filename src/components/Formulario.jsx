@@ -1,4 +1,4 @@
-import {useState, } from 'react'
+import {useState, useEffect } from 'react'
 import Error from './Error'
 
 const Formulario = ({pacientes,paciente,setPacientes}) => {
@@ -8,6 +8,20 @@ const Formulario = ({pacientes,paciente,setPacientes}) => {
     const [fecha, setFecha] = useState("")
     const [sintomas, setSintomas] = useState("")
     const [error, setError] = useState(false)
+    const [editionMode,setEditionMode]=useState(false)
+
+    useEffect(() => {
+        if(Object.keys(paciente).length > 0){
+            setNombre(paciente.nombre)
+            setPropietario(paciente.propietario)
+            setEmail(paciente.email)
+            setFecha(paciente.fecha)
+            setSintomas(paciente.sintomas)
+            setEditionMode(true)
+        }
+    }, [paciente])
+
+    console.log(paciente)
     
     const handelSubmit= (e) =>{
         e.preventDefault();
@@ -134,7 +148,7 @@ const Formulario = ({pacientes,paciente,setPacientes}) => {
                 <input
                     type="submit"
                     className="bg-indigo-600  w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 rounded-md hover:shadow-xl cursor-pointer transition-all"
-                    value="Agregar paciente"
+                    value={editionMode ? "Editar Paciente" : "Agregar Paciente"}
                 />
             </form>
         </div>

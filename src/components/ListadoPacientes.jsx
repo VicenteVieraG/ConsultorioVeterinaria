@@ -3,6 +3,7 @@ import {useId} from "react-id-generator"
 
 function ListadoPacientes({pacientes,setPaciente,}) {
     const id=useId();
+
     return (
         <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
 
