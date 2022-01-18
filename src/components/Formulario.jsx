@@ -1,7 +1,7 @@
 import {useState, useEffect } from 'react'
 import Error from './Error'
 
-const Formulario = ({pacientes,paciente,setPacientes}) => {
+const Formulario = ({pacientes,paciente,setPacientes, setPaciente}) => {
     const [nombre, setNombre] = useState("")
     const [propietario, setPropietario] = useState("")
     const [email, setEmail] = useState("")
@@ -20,8 +20,6 @@ const Formulario = ({pacientes,paciente,setPacientes}) => {
             setEditionMode(true)
         }
     }, [paciente])
-
-    console.log(paciente)
     
     const handelSubmit= (e) =>{
         e.preventDefault();
@@ -40,11 +38,24 @@ const Formulario = ({pacientes,paciente,setPacientes}) => {
             propietario,
             email,
             fecha,
-            sintomas,
-            id:Math.random().toString(36).substr(2)
+            sintomas
         }
 
-        setPacientes([...pacientes,objetoPaciente])
+        if(editionMode){
+            //modo edicion
+            objetoPaciente.id=paciente.id;
+
+            const pacientesActualizados = pacientes.map(p => p.id===paciente.id ? objetoPaciente : p)
+            setPacientes(pacientesActualizados);
+            setPaciente({})
+            setEditionMode(false);
+        }else{
+            //modo nuevo registro
+            objetoPaciente.id= Math.random().toString(36).substr(2)
+            setPacientes([...pacientes,objetoPaciente])
+
+        }
+
 
         //reiniciar el form
         setNombre("");
