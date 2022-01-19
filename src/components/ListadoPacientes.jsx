@@ -1,6 +1,6 @@
 import Paciente from "./Paciente"
 
-function ListadoPacientes({pacientes,setPaciente,}) {
+function ListadoPacientes({pacientes,setPaciente,eliminarPaciente}) {
     return (
         <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
 
@@ -12,7 +12,7 @@ function ListadoPacientes({pacientes,setPaciente,}) {
                         <span className="text-indigo-600 font-bold break-normal">Pacientes y Citas</span>
                     </p>
         
-                    {pacientes.map(pacientes => <Paciente key={pacientes.id} paciente={pacientes} setPaciente={setPaciente}/>)}
+                    {pacientes.map(pacientes => <Paciente key={pacientes.id} paciente={pacientes} setPaciente={setPaciente} eliminarPaciente={eliminarPaciente}/>)}
                 </>
             ) : (
                 <>
